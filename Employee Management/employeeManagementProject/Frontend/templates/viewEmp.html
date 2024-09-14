@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+
+    <form method='get' action="{% url 'filter_access' %}">
+        <label>
+            search by Employee department
+        </label>
+        <input name='search' type='text' >
+        <button type='submit'>search</button>
+    </form>
+
+<h1 >Employee</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee name</th>
+            <th>Employee Position</th>
+            <th>Employee department</th>
+            <th>Employee Salary</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+     </thead>
+
+     <tbody>
+        {% for Employee in all_Employee %}
+         <tr>
+            <td>{{Employee.Employee_name}}</td>
+            <td>{{Employee.Employee_position}}</td>
+            <td>{{Employee.Employee_department}}</td>
+            <td>{{Employee.Employee_salary}}</td>
+
+            <td>
+                <a href="{% url 'Employee_update' Employee.id %}"  onclick="return confirm('Did you need to update the Employee.');">
+                    <button type="button">Update</button>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'Employee_delete' Employee.id %}" onclick="return confirm('Did you need to delete the Employee.');">
+                    <button type="button">Delete</button>
+                </a>
+                
+        </td>
+        </tr>
+   
+        {% endfor %}
+        {% endblock %}
+
+    </tbody>
+</table>
+

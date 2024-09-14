@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Employee Adding page </h1>
+
+    <form action = "" method = "POST">
+        {% csrf_token %}  
+        {{ Employee }}
+       
+        <input type="submit" value="Add Employee" onclick="return confirm('are you sure, you want to add this Employee?');">
+    </form>
+    
+
+{% endblock %}
+
+
+
+
